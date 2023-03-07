@@ -58,10 +58,6 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
     suspend fun getRatingWithMovies(id: String) =
         repository.getRatingWithMovies(id)
 
-    fun switchTo(screen: Screen) {
-        this.screen = screen
-    }
-
     fun resetDatabase() {
         viewModelScope.launch {
             repository.resetDatabase()

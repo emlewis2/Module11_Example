@@ -6,10 +6,13 @@ import lewis.libby.module4_example.repository.ActorDto
 
 @Composable
 fun ActorList(
-    actors: List<ActorDto>
+    actors: List<ActorDto>,
+    onActorClick: (String) -> Unit,
 ) {
     SimpleText(text = "Actors")
     actors.forEach {
-        SimpleText(text = it.name)
+        SimpleText(text = it.name) {
+            onActorClick(it.id)
+        }
     }
 }

@@ -6,10 +6,13 @@ import lewis.libby.module4_example.repository.MovieDto
 
 @Composable
 fun MovieList(
-    movies: List<MovieDto>
+    movies: List<MovieDto>,
+    onMovieClick: (String) -> Unit,
 ) {
     SimpleText(text = "Movies")
     movies.forEach {
-        SimpleText(text = it.title)
+        SimpleText(text = it.title) {
+            onMovieClick(it.id)
+        }
     }
 }

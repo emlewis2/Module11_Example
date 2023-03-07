@@ -13,6 +13,7 @@ import lewis.libby.module4_example.repository.RatingWithMoviesDto
 fun RatingDisplay(
     ratingId: String,
     fetchRatingWithMovies: suspend (String) -> RatingWithMoviesDto,
+    onMovieClick: (String) -> Unit,
 ) {
     var ratingWithMoviesDto by remember { mutableStateOf<RatingWithMoviesDto?>(null) }
 
@@ -25,7 +26,9 @@ fun RatingDisplay(
     ratingWithMoviesDto?.let { ratingWithMovies ->
         SimpleText(text = ratingWithMovies.rating.name)
         ratingWithMovies.movies.forEach { movie ->
-            SimpleText(text = "Movie: ${movie.title}")
+            SimpleText(text = "Movie: ${movie.title}") {
+                onMovieClick(movie.id)
+            }
         }
     }
 }
