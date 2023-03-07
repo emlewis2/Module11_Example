@@ -27,7 +27,9 @@ fun ActorList(
     onResetDatabase = onResetDatabase,
 ) { paddingValues ->
     LazyColumn(
-        modifier = Modifier.padding(paddingValues)
+        modifier = Modifier
+            .padding(paddingValues)
+            .padding(8.dp)
     ) {
         items(
             items = actors,

@@ -14,7 +14,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/Module5_Example"
             android:theme="@style/Theme.Module3_Example">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
