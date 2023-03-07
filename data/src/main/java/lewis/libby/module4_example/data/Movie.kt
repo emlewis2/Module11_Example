@@ -1,8 +1,10 @@
 package lewis.libby.module4_example.data
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import androidx.room.Relation
 import java.util.UUID
 
 @Entity(
@@ -15,4 +17,27 @@ data class Movie(
     var title: String,
     var description: String,
     var ratingId: String,
+)
+
+data class MovieWithCast(
+    @Embedded
+    val movie: Movie,
+
+    @Relation(
+        entity = Role::class,
+        parentColumn = "id",
+        entityColumn = "movieId",
+    )
+    val rolesWithActors: List<RoleWithActor>,
+)
+
+data class RoleWithActor(
+    @Embedded
+    val role: Role,
+
+    @Relation(
+        parentColumn = "actorId",
+        entityColumn = "id"
+    )
+    val actor: Actor,
 )

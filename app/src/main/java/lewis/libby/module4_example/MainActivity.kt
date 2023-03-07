@@ -12,7 +12,7 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 //import androidx.compose.ui.tooling.preview.Preview
 
-import lewis.libby.module4_example.screens.TestScreen
+import lewis.libby.module4_example.screens.Ui
 import lewis.libby.module4_example.ui.theme.Module3_ExampleTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 //                    Greeting("Android")
-                    TestScreen {
+                    Ui {
                         finish() // handle "onExit"
                     }
                 }

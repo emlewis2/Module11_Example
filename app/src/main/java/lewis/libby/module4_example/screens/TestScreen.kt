@@ -72,9 +72,17 @@ fun TestScreen(
             )
             is MovieDisplay -> MovieDisplay(
                 movieId = screen.id,
+                fetchMovieWithCast = viewModel::getMovieWithCast,
+                onActorClick = { id ->
+                    viewModel.pushScreen(ActorDisplay(id))
+                }
             )
             is ActorDisplay -> ActorDisplay(
                 actorId = screen.id,
+                fetchActorWithFilmography = viewModel::getActorWithFilmography,
+                onMovieClick = { id ->
+                    viewModel.pushScreen(MovieDisplay(id))
+                }
             )
         }
     }

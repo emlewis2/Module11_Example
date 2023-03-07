@@ -8,6 +8,8 @@ interface MovieRepository {
     val actorsFlow: Flow<List<ActorDto>>
 
     suspend fun getRatingWithMovies(id: String): RatingWithMoviesDto
+    suspend fun getMovieWithCast(id: String): MovieWithCastDto
+    suspend fun getActorWithFilmography(id: String): ActorWithFilmographyDto
 
     suspend fun insert(movie: MovieDto)
     suspend fun insert(actor: ActorDto)

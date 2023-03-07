@@ -49,6 +49,10 @@ android {
 dependencies {
     implementation project(":repository")
 
+    // DO NOT KEEP THIS - IT'S HUGE
+    // Once you have selected your icons, copy their code into the app
+    implementation 'androidx.compose.material:material-icons-extended:1.2.1'
+
     implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1'
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'

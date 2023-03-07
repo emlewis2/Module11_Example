@@ -1,11 +1,18 @@
 package lewis.libby.module4_example.screens
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import lewis.libby.module4_example.R
+import lewis.libby.module4_example.Screen
+import lewis.libby.module4_example.components.MovieScaffold
 import lewis.libby.module4_example.components.SimpleText
 import lewis.libby.module4_example.repository.RatingWithMoviesDto
 
@@ -13,6 +20,8 @@ import lewis.libby.module4_example.repository.RatingWithMoviesDto
 fun RatingDisplay(
     ratingId: String,
     fetchRatingWithMovies: suspend (String) -> RatingWithMoviesDto,
+    onSelectListScreen: (Screen) -> Unit,
+    onResetDatabase: () -> Unit,
     onMovieClick: (String) -> Unit,
 ) {
     var ratingWithMoviesDto by remember { mutableStateOf<RatingWithMoviesDto?>(null) }
@@ -22,12 +31,18 @@ fun RatingDisplay(
         ratingWithMoviesDto = fetchRatingWithMovies(ratingId)
     }
 
-    SimpleText(text = "Rating")
-    ratingWithMoviesDto?.let { ratingWithMovies ->
-        SimpleText(text = ratingWithMovies.rating.name)
-        ratingWithMovies.movies.forEach { movie ->
-            SimpleText(text = "Movie: ${movie.title}") {
-                onMovieClick(movie.id)
+    MovieScaffold(
+        title = ratingWithMoviesDto?.rating?.name ?: stringResource(id = R.string.loading),
+        onSelectListScreen = onSelectListScreen,
+        onResetDatabase = onResetDatabase,
+    ) {paddingValues ->
+        Column(modifier = Modifier.padding(paddingValues)) {
+            ratingWithMoviesDto?.let { ratingWithMovies ->
+                ratingWithMovies.movies.forEach { movie ->
+                    SimpleText(text = movie.title) {
+                        onMovieClick(movie.id)
+                    }
+                }
             }
         }
     }

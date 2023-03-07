@@ -29,6 +29,14 @@ abstract class MovieDAO {
     @Query("SELECT * FROM Rating WHERE id = :id")
     abstract suspend fun getRatingWithMovies(id: String): RatingWithMovies
 
+    @Transaction
+    @Query("SELECT * FROM Actor WHERE id = :id")
+    abstract suspend fun getActorWithFilmography(id: String): ActorWithFilmography
+
+    @Transaction
+    @Query("SELECT * FROM Movie WHERE id = :id")
+    abstract suspend fun getMovieWithCast(id: String): MovieWithCast
+
     @Insert
     abstract suspend fun insert(vararg ratings: Rating)
     @Insert

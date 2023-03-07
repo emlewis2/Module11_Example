@@ -58,6 +58,12 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
     suspend fun getRatingWithMovies(id: String) =
         repository.getRatingWithMovies(id)
 
+    suspend fun getMovieWithCast(id: String) =
+        repository.getMovieWithCast(id)
+
+    suspend fun getActorWithFilmography(id: String) =
+        repository.getActorWithFilmography(id)
+
     fun resetDatabase() {
         viewModelScope.launch {
             repository.resetDatabase()

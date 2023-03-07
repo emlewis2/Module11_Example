@@ -26,6 +26,12 @@ class MovieDatabaseRepository(context: Context): MovieRepository {
     override suspend fun getRatingWithMovies(id: String): RatingWithMoviesDto =
         dao.getRatingWithMovies(id).toDto()
 
+    override suspend fun getMovieWithCast(id: String): MovieWithCastDto =
+        dao.getMovieWithCast(id).toDto()
+
+    override suspend fun getActorWithFilmography(id: String): ActorWithFilmographyDto =
+        dao.getActorWithFilmography(id).toDto()
+
     override suspend fun insert(movie: MovieDto) = dao.insert(movie.toEntity())
     override suspend fun insert(actor: ActorDto) = dao.insert(actor.toEntity())
     override suspend fun insert(rating: RatingDto) = dao.insert(rating.toEntity())
