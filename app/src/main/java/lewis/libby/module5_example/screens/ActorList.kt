@@ -24,6 +24,10 @@ fun ActorList(
     actors: List<ActorDto>,
     onSelectListScreen: (Screen) -> Unit,
     onResetDatabase: () -> Unit,
+    selectedItemIds: Set<String>,
+    onClearSelections: () -> Unit,
+    onToggleSelection: (String) -> Unit,
+    onDeleteSelectedItems: () -> Unit,
     onActorClick: (String) -> Unit,
 ) = ListScaffold(
     titleId = R.string.screen_title_actors,
@@ -34,6 +38,10 @@ fun ActorList(
     onItemClick = onActorClick,
     itemIcon = Icons.Default.Person,
     itemIconContentDescriptionId = R.string.tap_to_toggle_selection,
+    selectedItemIds = selectedItemIds,
+    onClearSelections = onClearSelections,
+    onToggleSelection = onToggleSelection,
+    onDeleteSelectedItems = onDeleteSelectedItems,
 ) { actor ->
     SimpleText(text = actor.name)
 }

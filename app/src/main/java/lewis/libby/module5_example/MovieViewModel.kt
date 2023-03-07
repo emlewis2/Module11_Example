@@ -32,7 +32,41 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
         set(value) {
             field = value
             screen = value.lastOrNull()
+            clearSelections()
         }
+
+    var selectedItemIds by mutableStateOf<Set<String>>(emptySet())
+        private set
+
+    fun clearSelections() {
+        selectedItemIds = emptySet()
+    }
+    fun toggleSelection(id: String) {
+        selectedItemIds =
+            if (id in selectedItemIds) {
+                selectedItemIds - id
+            } else {
+                selectedItemIds + id
+            }
+    }
+    fun deleteSelectedActors() {
+        viewModelScope.launch {
+            repository.deleteActorsById(selectedItemIds)
+            clearSelections()
+        }
+    }
+    fun deleteSelectedMovies() {
+        viewModelScope.launch {
+            repository.deleteMoviesById(selectedItemIds)
+            clearSelections()
+        }
+    }
+    fun deleteSelectedRatings() {
+        viewModelScope.launch {
+            repository.deleteRatingsById(selectedItemIds)
+            clearSelections()
+        }
+    }
 
     fun pushScreen(screen: Screen) {
         screenStack = screenStack + screen

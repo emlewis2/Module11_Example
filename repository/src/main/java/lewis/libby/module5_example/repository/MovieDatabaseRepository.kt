@@ -44,5 +44,9 @@ class MovieDatabaseRepository(context: Context): MovieRepository {
     override suspend fun delete(actor: ActorDto) = dao.delete(actor.toEntity())
     override suspend fun delete(rating: RatingDto) = dao.delete(rating.toEntity())
 
+    override suspend fun deleteMoviesById(ids: Set<String>) = dao.deleteMoviesById(ids)
+    override suspend fun deleteActorsById(ids: Set<String>) = dao.deleteActorsById(ids)
+    override suspend fun deleteRatingsById(ids: Set<String>) = dao.deleteRatingsById(ids)
+
     override suspend fun resetDatabase() = dao.resetDatabase()
 }

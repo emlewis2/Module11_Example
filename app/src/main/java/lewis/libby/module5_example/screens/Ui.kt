@@ -35,7 +35,11 @@ fun Ui(
             onResetDatabase = viewModel::resetDatabase,
             onRatingClick = { id ->
                 viewModel.pushScreen(RatingDisplay(id))
-            }
+            },
+            selectedItemIds = viewModel.selectedItemIds,
+            onClearSelections = viewModel::clearSelections,
+            onToggleSelection = viewModel::toggleSelection,
+            onDeleteSelectedItems = viewModel::deleteSelectedRatings,
         )
         MovieList -> MovieList(
             movies = movies,
@@ -43,7 +47,11 @@ fun Ui(
             onResetDatabase = viewModel::resetDatabase,
             onMovieClick = { id ->
                 viewModel.pushScreen(MovieDisplay(id))
-            }
+            },
+            selectedItemIds = viewModel.selectedItemIds,
+            onClearSelections = viewModel::clearSelections,
+            onToggleSelection = viewModel::toggleSelection,
+            onDeleteSelectedItems = viewModel::deleteSelectedMovies,
         )
         ActorList -> ActorList(
             actors = actors,
@@ -51,7 +59,11 @@ fun Ui(
             onResetDatabase = viewModel::resetDatabase,
             onActorClick = { id ->
                 viewModel.pushScreen(ActorDisplay(id))
-            }
+            },
+            selectedItemIds = viewModel.selectedItemIds,
+            onClearSelections = viewModel::clearSelections,
+            onToggleSelection = viewModel::toggleSelection,
+            onDeleteSelectedItems = viewModel::deleteSelectedActors,
         )
         is RatingDisplay -> RatingDisplay(
             ratingId = screen.id,

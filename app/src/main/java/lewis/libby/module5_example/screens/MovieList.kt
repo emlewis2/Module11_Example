@@ -15,6 +15,10 @@ fun MovieList(
     onSelectListScreen: (Screen) -> Unit,
     onResetDatabase: () -> Unit,
     onMovieClick: (String) -> Unit,
+    selectedItemIds: Set<String>,
+    onClearSelections: () -> Unit,
+    onToggleSelection: (String) -> Unit,
+    onDeleteSelectedItems: () -> Unit,
 ) = ListScaffold(
     titleId = R.string.screen_title_movies,
     items = movies,
@@ -24,6 +28,10 @@ fun MovieList(
     onItemClick = onMovieClick,
     itemIcon = Icons.Default.Person,
     itemIconContentDescriptionId = R.string.tap_to_toggle_selection,
+    selectedItemIds = selectedItemIds,
+    onClearSelections = onClearSelections,
+    onToggleSelection = onToggleSelection,
+    onDeleteSelectedItems = onDeleteSelectedItems,
 ) { movie ->
     SimpleText(text = movie.title)
 }

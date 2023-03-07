@@ -64,6 +64,13 @@ abstract class MovieDAO {
     @Delete
     abstract suspend fun delete(vararg roles: Role)
 
+    @Query("DELETE FROM Movie WHERE id IN (:ids)")
+    abstract suspend fun deleteMoviesById(ids: Set<String>)
+    @Query("DELETE FROM Actor WHERE id IN (:ids)")
+    abstract suspend fun deleteActorsById(ids: Set<String>)
+    @Query("DELETE FROM Rating WHERE id IN (:ids)")
+    abstract suspend fun deleteRatingsById(ids: Set<String>)
+
     @Query("DELETE FROM Movie")
     abstract suspend fun clearMovies()
     @Query("DELETE FROM Actor")
