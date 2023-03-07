@@ -1,5 +1,6 @@
 package lewis.libby.module5_example.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -71,9 +72,12 @@ fun RatingDisplay(
                                     .padding(8.dp)
                                     .fillMaxWidth()
                             ) {
-                                SimpleText(text = movie.title) {
-                                    onMovieClick(movie.id)
-                                }
+                                SimpleText(
+                                    text = movie.title,
+                                    modifier = Modifier.clickable {
+                                        onMovieClick(movie.id)
+                                    }
+                                )
                             }
                         }
                     }

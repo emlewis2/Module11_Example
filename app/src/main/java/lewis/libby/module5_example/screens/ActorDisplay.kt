@@ -1,5 +1,6 @@
 package lewis.libby.module5_example.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -67,9 +68,12 @@ fun ActorDisplay(
                                 .padding(8.dp)
                                 .fillMaxWidth()
                         ) {
-                            SimpleText(text = "${roleWithMovie.movie.title} (${roleWithMovie.character})") {
-                                onMovieClick(roleWithMovie.movie.id)
-                            }
+                            SimpleText(
+                                text = "${roleWithMovie.movie.title} (${roleWithMovie.character})",
+                                modifier = Modifier.clickable {
+                                    onMovieClick(roleWithMovie.movie.id)
+                                }
+                            )
                         }
                     }
                 }
