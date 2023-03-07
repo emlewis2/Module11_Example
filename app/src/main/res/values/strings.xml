@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Module4_Example</string>
+    <string name="Module5_Example">Module5_Example</string>
     <string name="reset_database">Reset Database</string>
 
     <string name="screen_title_ratings">MPAA Ratings</string>
