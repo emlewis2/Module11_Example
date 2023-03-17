@@ -1,6 +1,7 @@
 <resources>
     <string name="Module5_Example">Module5_Example</string>
     <string name="reset_database">Reset Database</string>
+    <string name="edit">Edit</string>
 
     <string name="screen_title_ratings">MPAA Ratings</string>
     <string name="screen_title_movies">Movies</string>
@@ -14,6 +15,15 @@
     <string name="tap_to_toggle_selection">Tap to toggle selection</string>
     <string name="clear_selections">Clear selections</string>
     <string name="delete_selected_items">Delete selected items</string>
+
+    <string name="name">Name</string>
+    <string name="title">Title</string>
+    <string name="rating_name_placeholder">Enter the actor name</string>
+    <string name="actor_name_placeholder">Enter the rating name</string>
+    <string name="movie_title_placeholder">Enter the movie title</string>
+    <string name="description">Description</string>
+    <string name="movie_description_placeholder">Enter the movie description</string>
+    <string name="rating_description_placeholder">Enter the rating description</string>
 
     <string name="loading">Loading</string>
 </resources>

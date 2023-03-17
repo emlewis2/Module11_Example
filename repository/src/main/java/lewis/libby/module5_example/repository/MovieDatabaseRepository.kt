@@ -23,6 +23,9 @@ class MovieDatabaseRepository(context: Context): MovieRepository {
                 actors.map { it.toDto() }
             }
 
+    override suspend fun getMovie(id: String): MovieDto =
+        dao.getMovie(id).toDto()
+
     override suspend fun getRatingWithMovies(id: String): RatingWithMoviesDto =
         dao.getRatingWithMovies(id).toDto()
 

@@ -31,7 +31,8 @@ fun MovieDisplay(
     onSelectListScreen: (Screen) -> Unit,
     onResetDatabase: () -> Unit,
     onActorClick: (String) -> Unit,
-) {
+    onEdit: (String) -> Unit,
+    ) {
     var movieWithCastDto by remember { mutableStateOf<MovieWithCastDto?>(null) }
 
     LaunchedEffect(key1 = movieId) {
@@ -43,6 +44,12 @@ fun MovieDisplay(
         title = movieWithCastDto?.movie?.title ?: stringResource(id = R.string.loading),
         onSelectListScreen = onSelectListScreen,
         onResetDatabase = onResetDatabase,
+        onEdit =
+        movieWithCastDto?.let { movieWithCast ->
+            {
+                onEdit(movieWithCast.movie.id)
+            }
+        }
     ) { paddingValues ->
         Column(
             modifier = Modifier

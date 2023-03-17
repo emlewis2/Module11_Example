@@ -7,7 +7,10 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import lewis.libby.module5_example.repository.MovieDatabaseRepository
+import lewis.libby.module5_example.repository.MovieDto
 import lewis.libby.module5_example.repository.MovieRepository
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 sealed interface Screen
@@ -22,6 +25,9 @@ data class ActorDisplay(
     val id: String
 ): Screen
 data class MovieDisplay(
+    val id: String
+): Screen
+data class MovieEdit(
     val id: String
 ): Screen
 
@@ -97,6 +103,20 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
 
     suspend fun getActorWithFilmography(id: String) =
         repository.getActorWithFilmography(id)
+
+    suspend fun getMovie(id: String) =
+        repository.getMovie(id)
+
+    private var movieUpdateJob: Job? = null
+
+    fun updateMovie(movieDto: MovieDto) {
+        movieUpdateJob?.cancel()
+        movieUpdateJob = viewModelScope.launch {
+            delay(500)
+            repository.update(movieDto)
+            movieUpdateJob = null
+        }
+    }
 
     fun resetDatabase() {
         viewModelScope.launch {

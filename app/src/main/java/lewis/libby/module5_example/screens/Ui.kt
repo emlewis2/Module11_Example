@@ -8,6 +8,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import lewis.libby.module5_example.ActorDisplay
 import lewis.libby.module5_example.ActorList
 import lewis.libby.module5_example.MovieDisplay
+import lewis.libby.module5_example.MovieEdit
 import lewis.libby.module5_example.MovieList
 import lewis.libby.module5_example.MovieViewModel
 import lewis.libby.module5_example.RatingDisplay
@@ -83,7 +84,17 @@ fun Ui(
             onResetDatabase = viewModel::resetDatabase,
             onActorClick = { id ->
                 viewModel.pushScreen(ActorDisplay(id))
+            },
+            onEdit = { id ->
+                viewModel.pushScreen(MovieEdit(id))
             }
+        )
+        is MovieEdit -> MovieEdit(
+            movieId = screen.id,
+            fetchMovie = viewModel::getMovie,
+            onSelectListScreen = viewModel::setScreenStack,
+            onResetDatabase = viewModel::resetDatabase,
+            onMovieUpdate = viewModel::updateMovie,
         )
         is ActorDisplay -> ActorDisplay(
             actorId = screen.id,

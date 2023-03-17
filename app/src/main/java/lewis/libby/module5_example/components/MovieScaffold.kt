@@ -14,6 +14,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Emergency
 import androidx.compose.material.icons.filled.Movie
 import androidx.compose.material.icons.filled.Person
@@ -37,6 +38,7 @@ fun MovieScaffold(
     onDeleteSelectedItems: () -> Unit = {},
     onSelectListScreen: (Screen) -> Unit,
     onResetDatabase: () -> Unit,
+    onEdit: (() -> Unit)? = null,
     content: @Composable (PaddingValues) -> Unit,
 ) {
     Scaffold(
@@ -45,6 +47,17 @@ fun MovieScaffold(
                 TopAppBar(
                     title = { SimpleText(text = title) },
                     actions = {
+                        onEdit?.let { onEdit ->
+                            IconButton(
+                                onClick = onEdit,
+                                modifier = Modifier.padding(8.dp),
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Edit,
+                                    contentDescription = stringResource(id = R.string.edit),
+                                )
+                            }
+                        }
                         IconButton(
                             onClick = onResetDatabase,
                             modifier = Modifier.padding(8.dp),
