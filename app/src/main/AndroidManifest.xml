@@ -7,14 +7,14 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/Module5_Example"
+        android:label="@string/Module11_Example"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Module3_Example"
+        android:theme="@style/Theme.Module11_Example"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.Module3_Example">
+            android:theme="@style/Theme.Module11_Example">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

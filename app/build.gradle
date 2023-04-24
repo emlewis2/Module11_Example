@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'lewis.libby.module5_example'
+    namespace 'lewis.libby.module11_example'
     compileSdk 33
 
     defaultConfig {
-        applicationId "lewis.libby.module5_example"
+        applicationId "lewis.libby.module11_example"
         minSdk 24
         targetSdk 33
         versionCode 1
