@@ -1,6 +1,7 @@
 package lewis.libby.module11_example.screens
 
 import android.content.Context
+import android.graphics.Movie
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -18,20 +19,21 @@ import lewis.libby.module11_example.RatingDisplay
 import lewis.libby.module11_example.RatingList
 import lewis.libby.module11_example.repository.createRepository
 
-class MovieViewModelFactory(private val context: Context): ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        @Suppress("UNCHECKED_CAST")
-        return MovieViewModel(
-            createRepository(context)
-        ) as T
-    }
-}
+//class MovieViewModelFactory(private val context: Context): ViewModelProvider.Factory {
+//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+//        @Suppress("UNCHECKED_CAST")
+//        return MovieViewModel(
+//            createRepository(context)
+//        ) as T
+//    }
+//}
 
 @Composable
 fun Ui(
-    context: Context,
-    viewModel: MovieViewModel =
-        viewModel(factory = MovieViewModelFactory(context)),
+//    context: Context,
+//    viewModel: MovieViewModel =
+//        viewModel(factory = MovieViewModelFactory(context)),
+    viewModel: MovieViewModel = viewModel(),
     onExit: () -> Unit,
 ) {
     BackHandler {

@@ -4,8 +4,10 @@ import android.content.Context
 import lewis.libby.module11_example.data.createDao
 import kotlinx.coroutines.flow.map
 import lewis.libby.module11_example.data.MovieDAO
+import javax.inject.Inject
 
-class MovieDatabaseRepository(private val dao: MovieDAO): MovieRepository {
+class MovieDatabaseRepository @Inject constructor(private val dao: MovieDAO):
+    MovieRepository {
 
     override val ratingsFlow =
         dao.getRatingsFlow()

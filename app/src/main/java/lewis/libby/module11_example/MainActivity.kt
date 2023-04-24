@@ -15,7 +15,9 @@ import androidx.compose.ui.platform.LocalContext
 
 import lewis.libby.module11_example.screens.Ui
 import lewis.libby.module11_example.ui.theme.Module3_ExampleTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +29,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 //                    Greeting("Android")
-                    Ui(context = LocalContext.current) {
+                    Ui {
                         finish() // handle "onExit"
                     }
                 }

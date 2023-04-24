@@ -10,9 +10,11 @@ import androidx.lifecycle.viewModelScope
 import lewis.libby.module11_example.repository.MovieDatabaseRepository
 import lewis.libby.module11_example.repository.MovieDto
 import lewis.libby.module11_example.repository.MovieRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 sealed interface Screen
 object RatingList: Screen
@@ -32,7 +34,9 @@ data class MovieEdit(
     val id: String
 ): Screen
 
-class MovieViewModel(private val repository: MovieRepository) : ViewModel() {
+@HiltViewModel
+class MovieViewModel
+    @Inject constructor(private val repository: MovieRepository) : ViewModel() {
 
     private var screenStack: List<Screen> = listOf(MovieList)
         set(value) {
